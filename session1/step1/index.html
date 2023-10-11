@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemple WebGL</title>
+    <style>
+        #webglCanvas {
+            border: 1px solid black;
+            display: block;
+            margin: 20px auto;
+            width: 600px;
+            height: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="webglCanvas"></canvas>
+
+<script>
+    window.onload = function() {
+        try {
+            // Récupération de l'élément canvas par son ID
+            var canvas = document.getElementById('webglCanvas');
+            // Déclaration de la variable gl sans initialisation
+            var gl;
+
+            // Tentative d'acquisition du contexte WebGL
+            try {
+                gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            } catch (e) {
+                // Gestion des erreurs
+                console.error("Erreur lors de l'initialisation du contexte WebGL: " + e.message);
+            }
+
+            // Vérification si le contexte WebGL a été correctement initialisé
+            if (gl) {
+                // Succès, affichage d'un message dans la console
+                console.log('Contexte WebGL initialisé avec succès.');
+                // Vous pouvez commencer à travailler avec WebGL ici
+            } else {
+                // Erreur, affichage d'un message d'erreur dans la console
+                console.error('Impossible d\'initialiser le contexte WebGL. Veuillez mettre à jour votre navigateur.');
+            }
+        } catch (e) {
+            // Gestion des exceptions générales
+            console.error("Une erreur s'est produite: " + e.message);
+        }
+    };
+</script>
+</body>
+
+</html>
